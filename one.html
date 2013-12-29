@@ -1,0 +1,206 @@
+
+<HTML>
+	<HEAD>
+		<TITLE>One</TITLE>
+		<link rel="stylesheet" type="text/css" href="padrao.css">
+	</HEAD>
+	<BODY id="page" onLoad="loadCity(document.formulario.pais, document.formulario.cidade);">
+		<table border="1">
+			<form name="formulario">
+  <TBODY> 
+				<tr>
+					<td>
+						<input name="campoTexto" et_label="Primeiro campo" et_type="et_date" et_needed="1">
+						<br><TEXTAREA name="campoGrande" et_label="Campo Grande Textarea" et_needed="1"></TEXTAREA>
+					</td>
+					<td>
+						<input type="button" name="botao" onClick="teste();" value="Teste">
+						<a href="two.html" onClick="window['oETDate'] = new window['LibETDate.js'](); alert(window['oETDate'].valida)">two</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select name="pais" onChange="loadCity(this, this.form.cidade);">
+							<option value="" selected></option>
+							<option value="3">Itália</option>
+							<option value="2">França</option>
+							<option value="1">Brasil</option>
+							<option value="4">Alemanha</option>
+							<option value="5">Argentina</option>
+							<option value="6">Suíça</option>
+							<option value="7">Japão</option>
+							<option value="8">Grécia</option>
+						</select>
+					</td>
+					<td>
+						<select name="cidade" disabled>
+							<option value="" selected 
+       ></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value=" Validate " onClick="validate(this.form);">
+					</td>
+					<td>
+						<input type="button" value=" Order " onClick="quicksort(this.form.pais);" id=button1 name=button1>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select name="origem" multiple size="10">
+							<option value="1">Teste 01</option>
+							<option value="2">Teste 02</option>
+							<option value="3">Teste 03</option>
+							<option value="4">Teste 04</option>
+							<option value="5">Teste 05</option>
+						</select>
+					</td>
+					<td>
+						<select name="destino" multiple size="10">
+							<option value="6">Teste 06</option>
+							<option value="7">Teste 07</option>
+							<option value="8">Teste 08</option>
+							<option value="9">Teste 09</option>
+							<option value="10">Teste 10</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value=" > > " onClick="multipleSelectMove(this.form.origem, this.form.destino);" id=button2 name=button2>
+					</td>
+					<td>
+						<input type="button" value=" < < " onClick="multipleSelectMove(this.form.destino, this.form.origem);" id=button1 name=button1>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" name="botaoValida" onClick="alert(window['oETDate'].valida(this.form.campoData.value));" value=" Valida Data ">
+					</td>
+					<td>
+						<input type="text" name="campoData" onKeyPress="return window['oETDate'].mascara(this, event || window.event);" maxlength ="10" class="editavel" onBlur="this.className='naoEditavel';" onFocus="this.className='editavel';">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" name="botaoSubmit" value=" Submit ">
+					</td>
+					<td id="arvore" >
+						<!--ul>
+							<li id="teste4">
+								<IMG id=teste4 style="CURSOR: pointer;" onclick=oArvore.mostraEscondeElemento(this); src="menos.jpg"> teste 4
+								<ul pai="teste4">
+									<li id="teste1.1">
+										teste 1.1 
+          
+									<li id="teste1.2">
+										teste 1.2 
+          
+									<li id="teste1.3">
+										teste 1.3
+									</li>
+								</ul>
+							<li>
+								teste 2 
+							</li>
+							<li>
+								teste 3 
+        					</li>
+						</ul-->
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" name="botao" value=" Código " onClick="alert( document.getElementById( 'arvore' ).innerHTML );">
+						<br><input type="button" name="botao" value=" Calendário " onClick="oCalendario.montaCalendario('oCalendario'); alert(oETDate);">
+					</td>
+					<td id='calendario'>
+						
+					</td>
+				</tr>
+			</form></TBODY>
+		</table>
+	</BODY>
+</HTML>
+<script language="JavaScript" src="LibETCommon.js"></script>
+<script language="JavaScript" src="LibETMessage.js"></script>
+<script language="JavaScript" src="LibETTree.js"></script>
+<script language="JavaScript" src="LibETCalendar.js"></script>
+<script language="JavaScript">
+function teste()
+{
+	var oForm = document.formulario;
+	var iAux = 0;
+	var iTemp = 0;
+	var sAux = '';
+			
+	for( iAux = 0; iAux < oForm.elements.length; iAux++ )
+	{
+		sAux = 'Nome: ' + oForm.elements[iAux].name + '\n';
+		sAux = sAux + 'Valor: ' + oForm.elements[iAux].value + '\n';
+		for( iTemp = 0; iTemp < oForm.elements[iAux].attributes.length; iTemp++ )
+		{
+			if( oForm.elements[iAux].attributes[iTemp].specified )
+				sAux = sAux + oForm.elements[iAux].attributes[iTemp].nodeName + ': ' + oForm.elements[iAux].attributes[iTemp].nodeValue + '\n';
+		}
+				
+		alert(sAux);
+	}
+}
+		
+function loadCity(oSelect, oSelFilho)
+{
+	var iSelected = oSelect.options[oSelect.selectedIndex].value;
+	var iAux;
+	var iLength = oSelFilho.options.length;
+					
+	for( iAux = 1; iAux < iLength; iAux++ )
+	{
+		removeOption( oSelFilho, 1 );
+	}
+
+	oSelFilho.disabled = false;
+
+	switch(iSelected)
+	{
+		case '1':
+			addOption( oSelFilho, '', 1, 'Rio de Janeiro', '' );
+			addOption( oSelFilho, '', 2, 'São Paulo', '' );
+			break;
+		case '2':
+			addOption( oSelFilho, '', 3, 'Paris', '' );
+			addOption( oSelFilho, '', 4, 'Lyon', '' );
+			break;
+		case '3':
+			addOption( oSelFilho, '', 5, 'Roma', '' );
+			addOption( oSelFilho, '', 6, 'Milão', '' );
+			break;
+		default:
+			oSelFilho.disabled = true;
+			break;
+	}
+}
+
+function montaArvore()
+{
+	oArvore.adicionaElemento( 'teste1', 'http://www.google.com', 'teste 1', '', '' );
+	oArvore.adicionaElemento( 'teste1.1', '', 'teste 1.1', 'teste1', '' );
+	oArvore.adicionaElemento( 'teste2', 'http://www.google.com', 'teste 2', '', '' );
+	oArvore.adicionaElemento( 'teste2.1', '', 'teste 2.1', 'teste2', '' );
+	oArvore.adicionaElemento( 'teste3', 'http://www.google.com', 'teste 3', '', '' );
+	oArvore.adicionaElemento( 'teste3.1', '', 'teste 3.1', 'teste3', '' );
+	
+	oArvore.constroiArvore();
+	
+	oArvore.exibeArvore( 'arvore' );
+}
+
+var oArvore = new ETTree();
+
+addLoadEvent(montaArvore);
+
+var oCalendario = new ETCalendar();
+oCalendario.selecionaLocal('calendario');
+</script>

@@ -1,0 +1,85 @@
+#page
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+INPUT
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+SELECT
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+TEXTAREA
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+TABLE.TD
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+#page #arvore
+{
+    BACKGROUND-COLOR: #C0C0C0;
+}
+#page #arvore UL
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    FONT-SIZE: 10px;
+    BACKGROUND-IMAGE: url(IMG/ponto.jpg);
+    MARGIN: 0px 0px 0px 3px;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: medium none;
+    BACKGROUND-REPEAT: repeat-y;
+    FONT-FAMILY: Verdana;
+    LIST-STYLE-TYPE: none;
+    BACKGROUND-COLOR: transparent
+}
+#page #arvore UL LI
+{
+    LIST-STYLE: disc url(IMG/linha.jpg) inside;
+    FONT-SIZE: 10px;
+    PADDING: 0px 0px 0px 9px;
+    FONT-FAMILY: Verdana;
+    BACKGROUND-COLOR: transparent
+}
+.editavel
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    FONT-SIZE: 10px;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: black 1px solid;
+    FONT-FAMILY: Verdana
+}
+.naoEditavel
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    FONT-SIZE: 10px;
+    BORDER-LEFT: medium none;
+    CURSOR: pointer;
+    BORDER-BOTTOM: medium none;
+    FONT-FAMILY: Verdana
+}
+BODY
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+TD
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+TABLE
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
